@@ -23,7 +23,9 @@ fun exec delta (q, tape as (LList, h, RList)) =
     case List.find (fn (x,y) => x = (q, h)) delta of
 	NONE => (LList, h, RList)
       | SOME (x, (q', s, d)) =>
-	exec delta (q', move d (LList, s, RList))
+	let val _ = Dynamic.pp tape in
+	    exec delta (q', move d (LList, s, RList))
+	end
 
 fun eval (state, delta) tape = exec delta (state, tape)
 
