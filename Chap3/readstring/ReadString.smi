@@ -1,0 +1,11 @@
+_require "basis.smi"
+structure ReadString =
+struct
+
+(* open TextIO *)
+
+exception EOF
+val skipSpaces : TextIO.instream -> unit
+val readString : TextIO.instream -> string
+
+end

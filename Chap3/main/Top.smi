@@ -1,0 +1,9 @@
+_require "basis.smi"
+_require "../readstring/ReadString.smi"
+
+structure Top =
+
+struct
+val topIn : TextIO.instream -> unit
+val top : string -> unit
+end
