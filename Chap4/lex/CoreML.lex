@@ -28,7 +28,17 @@ ws    = "\ " | "\t" | "\r\n" | "\n" | "\r";
 \"[^"]*\" => (Token.STRING
               (String.substring
                  (yytext, 1, String.size yytext - 2)));
+","       => (Token.COMMA);
+"."       => (Token.PERIOD);
+"..."     => (Token.DOTS);
+":"       => (Token.COLON);
+";"       => (Token.SEMICOLON);
+"="       => (Token.EQ);
+"=>"      => (Token.GE);
+"["       => (Token.LBRACKET);
+"]"       => (Token.RBRACKET);
 "_"       => (Token.UNDERBAR);
+"|"       => (Token.BAR);
 {kw}      => (Token.KEYWORD yytext);
 {id}      => (Token.ID yytext);
 {real}    => (Token.REAL yytext);
