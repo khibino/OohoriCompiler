@@ -90,7 +90,7 @@ fun nfa2dfa (nfa as {S = sigma, delta = deltaTable, ...} : NFA)
 	    end
 
 	fun deltaD (P : Q list) (a : S) =
-	    concatMap (fn p => deltaHat p (SNil +: a)) P
+	    nub (concatMap (fn p => deltaHat p (SNil +: a)) P)
 
 	fun addS ((A, s) : state * S)
 		 ((Q1, Q2, omega) : state list * state list * Omega)
