@@ -15,6 +15,7 @@ num   = {digit}+;
 frac  = "."{num};
 exp   = [eE](~?){num};
 real  = (~?)(({num}{frac}?{exp})|({num}{frac}{exp}?));
+int   = (~?){num};
 ws    = "\ " | "\t" | "\r\n" | "\n" | "\r";
 
 %%
@@ -25,5 +26,6 @@ ws    = "\ " | "\t" | "\r\n" | "\n" | "\r";
 "_"       => (Token.UNDERBAR);
 {id}      => (Token.ID yytext);
 {real}    => (Token.REAL yytext);
+{int}     => (Token.INT yytext);
 {ws}      => (lex ());
 .         => (Token.SPECIAL yytext);
