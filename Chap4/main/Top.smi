@@ -3,5 +3,6 @@ _require "../lex/Token.smi"
 _require "../lex/Lexer.smi"
 structure Top =
 struct
+val topIn : TextIO.instream -> unit
 val top : string -> unit
 end

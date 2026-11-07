@@ -9,6 +9,14 @@ fun readAndPrintLoop lexer =
 	readAndPrintLoop lexer
     end
 
+fun topIn inStream =
+    let
+	val lexer = Lexer.makeLexer inStream
+    in
+	readAndPrintLoop lexer
+    end
+    handle Lexer.EOF => ()
+
 fun top file =
     let
 	val inStream = TextIO.openIn file
