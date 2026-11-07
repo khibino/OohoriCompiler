@@ -8,6 +8,11 @@ fun atoi s = valOf (Int.fromString s)
 %%
 
 %structure CoreMLLex
+kw    = "andalso" | "and" | "as" | "case" | "do"
+      | "exception" | "fn" | "fun" | "handle" | "if" | "in"
+      | "infix" "infixr" | "nonfix" | "let" | "local"
+      | "of" | "op" | "open" | "orelse" | "raise" | "rec"
+      | "then" | "use" | "val" | "while";
 alpha = [A-Za-z];
 digit = [0-9];
 id    = {alpha}({alpha}|{digit})*;
@@ -24,6 +29,7 @@ ws    = "\ " | "\t" | "\r\n" | "\n" | "\r";
               (String.substring
                  (yytext, 1, String.size yytext - 2)));
 "_"       => (Token.UNDERBAR);
+{kw}      => (Token.KEYWORD yytext);
 {id}      => (Token.ID yytext);
 {real}    => (Token.REAL yytext);
 {int}     => (Token.INT yytext);
